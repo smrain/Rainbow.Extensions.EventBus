@@ -33,7 +33,6 @@ namespace Rainbow.Extensions.EventBus.Test
                 .WriteTo.Debug()
                 .CreateLogger();
 
-
             var serviceProvider = new ServiceCollection()
                 .AddSingleton(Configuration)
                 .AddLogging(x => x.SetMinimumLevel(LogLevel.Trace))
@@ -66,7 +65,7 @@ namespace Rainbow.Extensions.EventBus.Test
                     return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
                 })
                 .AddEventBus(Configuration);
-                //.BuildServiceProvider();
+            //.BuildServiceProvider();
 
             //configure autofac
             var container = new ContainerBuilder();
@@ -111,15 +110,14 @@ namespace Rainbow.Extensions.EventBus.Test
             await Task.CompletedTask;
         }
     }
-   
-    
+
+
     public class ApplicationModule : Autofac.Module
     {
 
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterAssemblyTypes(typeof(TestIntegrationEventHandler).GetTypeInfo().Assembly)
-                .AsClosedTypesOf(typeof(IIntegrationEventHandler<>));
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).AsClosedTypesOf(typeof(IIntegrationEventHandler<>));
         }
     }
 

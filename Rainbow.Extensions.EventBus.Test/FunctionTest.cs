@@ -105,7 +105,7 @@ namespace Rainbow.Extensions.EventBus.Test
     {
         public async Task Handle(TestIntegrationEvent @event)
         {
-            Log.Debug(@event.Remark);
+            Log.Debug($"======== Handle : {@event.Remark} ========");
 
             await Task.CompletedTask;
         }

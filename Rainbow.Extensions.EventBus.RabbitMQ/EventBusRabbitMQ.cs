@@ -112,6 +112,17 @@ namespace Rainbow.Extensions.EventBus.RabbitMQ
             _subsManager.RemoveSubscription<T, TH>();
         }
 
+        public void Dispose()
+        {
+            if (_consumerChannel != null)
+            {
+                _consumerChannel.Dispose();
+            }
+
+            _subsManager.Clear();
+        }
+
+
         private void SubsManager_OnEventRemoved(object sender, string eventName)
         {
             if (!_persistentConnection.IsConnected)
@@ -150,16 +161,6 @@ namespace Rainbow.Extensions.EventBus.RabbitMQ
                                       routingKey: eventName);
                 }
             }
-        }
-
-        public void Dispose()
-        {
-            if (_consumerChannel != null)
-            {
-                _consumerChannel.Dispose();
-            }
-
-            _subsManager.Clear();
         }
 
         private void StartBasicConsume()

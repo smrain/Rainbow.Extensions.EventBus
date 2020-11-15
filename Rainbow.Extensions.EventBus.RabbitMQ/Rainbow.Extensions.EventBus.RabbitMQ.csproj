@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <Authors>Frank Yu</Authors>
+    <PackageIcon>rainbow_1f308.png</PackageIcon>
+    <Description>RabbitMQ EventBus provider implementation for Rainbow.Extensions.EventBus.Abstractions.</Description>
+    <PackageTags>RabbitMQ</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,10 +13,14 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.9" />
     <PackageReference Include="Polly" Version="7.2.1" />
     <PackageReference Include="RabbitMQ.Client" Version="6.2.1" />
+    <PackageReference Include="Rainbow.Extensions.EventBus.Abstractions" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Rainbow.Extensions.EventBus.Abstractions\Rainbow.Extensions.EventBus.Abstractions.csproj" />
+    <None Include="..\..\rainbow_1f308.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

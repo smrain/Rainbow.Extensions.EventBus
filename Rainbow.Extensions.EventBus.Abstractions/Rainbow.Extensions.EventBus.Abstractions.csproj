@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\rainbow_1f308.png">
+    <None Include="..\rainbow_1f308.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
